@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
   def index
-    @addresses = Address.all
+    @addresses = Address.order("created_at DESC")
   end
 
   def new
@@ -11,9 +11,14 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
     if @address.valid?
       @address.save
-      redirect_to :index
+      return redirect_to root_path
     else
-      render :new
+      render "new"
     end
+  end
+
+  private
+  def address_params
+    params.require(:address).permit(:name, :prefecture_id)
   end
 end
