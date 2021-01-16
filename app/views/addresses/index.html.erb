@@ -1,2 +1,14 @@
-<h1>Addresses#index</h1>
-<p>Find me in app/views/addresses/index.html.erb</p>
+<h1>あなたの住んでいる都道府県は？</h1>
+<%= link_to "投稿する", new_address_path %>
+<div>
+  <ul>
+    <% if @addresses %>
+      <% @addresses.each do |address| %>
+      <li>
+        <%= address.name %>
+        <%= address.prefecture_id.name %>
+      </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
