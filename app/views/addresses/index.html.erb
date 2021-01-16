@@ -6,7 +6,7 @@
       <% @addresses.each do |address| %>
       <li>
         <%= address.name %>
-        <%= address.prefecture_id.name %>
+        <%= address.prefecture.name %><%# アソシエーション定義によってprefecure.rbに格納している都道府県名にアクセスできる %>
       </li>
       <% end %>
     <% end %>
